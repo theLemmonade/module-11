@@ -70,3 +70,15 @@ app.post("/api/notes", (req, res) => {
 		res.status(500).json("Error in posting Note");
 	}
 });
+
+// API delete route
+app.delete("/api/notes/:id", (req, res) => {
+	console.info(`${req.method} request received to delete a note`);
+	let db = JSON.parse(fs.readFileSync("./db/db.json"));
+	let deleteNotes = db.filter((item) => item.id !== req.params.id);
+	fs.writeFileSync("./db/db.json", JSON.stringify(deleteNotes));
+	res.json(deleteNotes);
+});
+app.listen(PORT, () =>
+	console.log(`Example app listening at http://localhost:${PORT}`)
+);
