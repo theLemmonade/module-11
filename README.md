@@ -1,4 +1,4 @@
-# module-13: Note Taker
+# Note Taker
 
 ## Description
 
